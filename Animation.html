@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        div {
+            animation: 
+                translate-x 5000ms infinite alternate ease-in-out,
+                translate-y 2100ms infinite alternate ease-in-out,
+                rotate 6500ms infinite linear,
+                translate-x 5000ms infinite alternate ease-in-out,
+                scale 7200ms infinite alternate ease-in-out;
+            width: 40vmin;
+            height: 40vmin;
+            border-radius: 10%;
+            background-color: hsl(168, 89%, 54%);
+            margin: auto;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: hsl(123, 9%, 5%);
+            overflow: hidden;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        @keyframes scale {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(0.4);
+            }
+        }
+        @keyframes rotate {
+            from {
+                transform: rotate(0turn);
+            }
+            to {
+                transform: rotate(1turn);
+            }
+        }
+        @keyframes translate-x {
+            from {
+                transform: translateX(-25vmin);
+            }
+            to {
+                transform: translateX(25vmin);
+            }
+        }
+        @keyframes translate-y {
+            from {
+                transform: translateY(-15vmin);
+            }
+            to {
+                transform: translateY(15vmin);
+            }
+        }
+        select {
+            font-size: 1em;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="animated"></div>
+    <select id="composite">
+        <option>replace</option>
+        <option selected>add</option>
+        <option>accumulate</option>
+    </select>
+<script>
+    animated.getAnimations().forEach((animation) => {
+        animation.effect.composite = "add";
+    });
+    document.getElementById('composite').addEventListener('change', e => {
+        animated.getAnimations().forEach((animation) => {
+            animation.effect.composite = e.currentTarget.value;
+        });
+    });
+</script>
+</body>
+</html>

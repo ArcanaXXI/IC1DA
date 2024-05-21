@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opacity</title>
+    <style>
+        body {
+            height: 100vh;
+            background-color: #16161c;
+            overflow: hidden;
+            display: flex;
+        }
+        div {
+            width: 70vmin;
+            height: 70vmin;
+            background-color: hsl(171, 90%, 54%);
+            border-radius: 50%;
+            font-size: 50vmin;
+            display: grid;
+            place-content: center;
+            margin: auto;
+            transform: rotate(0.25turn);
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="smiley">:)</div>
+<script>
+    smiley.animate (
+        {
+            opacity: [0, 0.8]
+        },
+        {
+            duration: 2000,
+            iterations: Infinity,
+            direction: "alternate"
+        }
+    );
+    smiley.animate (
+        {
+            opacity: [0, 0.2]
+        },
+        {
+            duration: 2000,
+            iterations: Infinity,
+            direction: "alternate",
+            composite: "add"
+        }
+    )
+</script>
+</body>
+</html>
